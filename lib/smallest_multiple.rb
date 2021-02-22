@@ -14,38 +14,15 @@ require 'pry'
 # 1 to number evaluate if it is a least common multiple
 
 def smallest_multiple(input)
-  # starting_point = 1
-  x = 1
-  (2..input).to_a.each do |y|
-    x *= y / gcd(x, y)
-  end 
-  x
+  # Array provides lcm() which gives you the least common multiple of two numbers. 
+  # You can apply this to an entire array by applying it to each result as you go through it. 
+  # This is what reduce does.
+  # LCM Returns the least common multiple (always positive). 0.lcm(x) and x.lcm(0) return zero.
+  (1..input).to_a.reduce{:lcm}
 end
 
-# define greatest commond divisor for x and y
-##
-# end
+print smallest_multiple(10)
 
-def gcd(a, b)
-  # In mathematics, the greatest common divisor (gcd) of two or more integers, 
-  # when at least one of them is not zero, 
-  # is the largest positive integer that divides the numbers 
-  # without a remainder. For example, the GCD of 8 and 12 is 4
-  return a if b.zero?
-  # will continue to run until b=0, and which time we return a
-  gcd(b, a%b)
-  
-end
-
-smallest_multiple(10)
-# print gcd(54, 24)
-# prints 6, why?
-# a = 54
-# call gcd on 24 and (54 % 24) = 6
-# a = 24, b = 6
-# call gcd on 6 and (24 % 6) = 0
-# a = 6, b = 0
-# b == 0,  so return 6
 
 
 ##EUCLIDEAN
